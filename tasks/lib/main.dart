@@ -22,14 +22,11 @@ class MyApp extends StatelessWidget {
           title: const Text('Tasks'),
         ),
         body: ListView(
-          children:[
-            Task('Teste de descrição maior que o normal' ),
-            Task('teste'),
-            Task('teste'),
-            Task('teste'),
-            Task('teste'),
-            Task('teste'),
-            Task('teste'),
+          children:const [
+            Task('Teste de descrição maior que o normal', 'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large' ),
+            Task('teste','https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large'),
+            Task('teste' ,'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large'),
+
           ],
         ),
         floatingActionButton: FloatingActionButton(
@@ -46,8 +43,9 @@ class MyApp extends StatelessWidget {
 
 class Task extends StatefulWidget {
   final String nome;
+  final String foto;
 
-  const Task(this.nome,{super.key});
+  const Task(this.nome,this.foto, {super.key});
 
   @override
   State<Task> createState() => _TaskState();
@@ -80,7 +78,7 @@ class _TaskState extends State<Task> {
                         width: 72,
                         height: 100,
                         child: Image.network(
-                          'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',
+                          widget.foto,
                           fit: BoxFit.cover,
                         ),
                       ),
