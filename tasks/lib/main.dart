@@ -121,35 +121,7 @@ class _TaskState extends State<Task> {
                               ),
                             ),
                           ),
-                          Row(
-                            children: [
-                              Icon(
-                                  Icons.star,
-                                  size: 15,
-                                  color: (widget.dificuldade >= 1) ? Colors.blue : Colors.blue[100]
-                              ),
-                              Icon(
-                                  Icons.star,
-                                  size: 15,
-                                  color: (widget.dificuldade >= 2) ? Colors.blue : Colors.blue[100]
-                              ),
-                              Icon(
-                                  Icons.star,
-                                  size: 15,
-                                  color: (widget.dificuldade >= 3) ? Colors.blue : Colors.blue[100]
-                              ),
-                              Icon(
-                                  Icons.star,
-                                  size: 15,
-                                  color: (widget.dificuldade >= 4) ? Colors.blue : Colors.blue[100]
-                              ),
-                              Icon(
-                                  Icons.star,
-                                  size: 15,
-                                  color: (widget.dificuldade >= 5) ? Colors.blue : Colors.blue[100]
-                              ),
-                            ],
-                          )
+                          Dificullty(dificulltyLevel: widget.dificuldade),
                         ],
                       ),
                       ElevatedButton(
@@ -198,6 +170,50 @@ class _TaskState extends State<Task> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class Dificullty extends StatelessWidget {
+
+  final dificulltyLevel;
+
+  const Dificullty({
+    required this.dificulltyLevel,
+    Key? key,
+  }) : super(key: key);
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(
+            Icons.star,
+            size: 15,
+            color: (dificulltyLevel >= 1) ? Colors.blue : Colors.blue[100]
+        ),
+        Icon(
+            Icons.star,
+            size: 15,
+            color: (dificulltyLevel >= 2) ? Colors.blue : Colors.blue[100]
+        ),
+        Icon(
+            Icons.star,
+            size: 15,
+            color: (dificulltyLevel >= 3) ? Colors.blue : Colors.blue[100]
+        ),
+        Icon(
+            Icons.star,
+            size: 15,
+            color: (dificulltyLevel >= 4) ? Colors.blue : Colors.blue[100]
+        ),
+        Icon(
+            Icons.star,
+            size: 15,
+            color: (dificulltyLevel >= 5) ? Colors.blue : Colors.blue[100]
+        ),
+      ],
     );
   }
 }
