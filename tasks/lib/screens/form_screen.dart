@@ -140,6 +140,7 @@ class _FormScreenState extends State<FormScreen> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Tarefa Adicionada')),
                         );
+                        Navigator.pop(context);
                       }
                     },
                     child: const Text('Adicionar'),

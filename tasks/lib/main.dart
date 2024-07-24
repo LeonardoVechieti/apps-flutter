@@ -25,8 +25,8 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const FormScreen(),
-      //home: const InitialScreen(),
+      //home: const FormScreen(),
+      home: const InitialScreen(),
     );
   }
 }
