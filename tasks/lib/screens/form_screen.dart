@@ -21,6 +21,21 @@ class _FormScreenState extends State<FormScreen> {
   //Chave para o formulário
   final _formKey = GlobalKey<FormState>();
 
+  //Validator
+  bool valueValidator(String? value) {
+    if (value != null && value.isNotEmpty) {
+      return false;
+    }
+    return true;
+  }
+  bool dificuldadeValidator(String? value) {
+    if (value != null && value.isNotEmpty) {
+      if (int.parse(value) > 5 || int.parse(value) < 1) {
+        return true;
+      }
+    }
+    return false;
+  }
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -50,7 +65,7 @@ class _FormScreenState extends State<FormScreen> {
                     child: TextFormField(
                       controller: nomeController,
                       validator: (value) {
-                        if (value == null || value.isEmpty) {
+                        if (valueValidator(value)) {
                           return 'Por favor, insira um nome';
                         }
                         return null;
@@ -71,7 +86,7 @@ class _FormScreenState extends State<FormScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       validator: (value) {
-                        if (value == null || value.isEmpty) {
+                        if (valueValidator(value)) {
                           return 'Por favor, insira uma url';
                         }
                         return null;
@@ -94,7 +109,7 @@ class _FormScreenState extends State<FormScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       validator: (value) {
-                        if (value == null || value.isEmpty) {
+                        if (dificuldadeValidator(value)) {
                           return 'Por favor, insira uma dificuldade';
                         }
                         return null;

@@ -20,7 +20,8 @@ class _InitialScreenState extends State<InitialScreen> {
           title: const Text('Tasks'),
         ),
         body: ListView(
-          children: TaskInherited.of(context).taskList
+          children: TaskInherited.of(context).taskList,
+          padding: const EdgeInsets.only(top: 10, bottom: 70),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
