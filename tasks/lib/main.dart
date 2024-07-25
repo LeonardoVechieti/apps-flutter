@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tasks/data/task_inherited.dart';
 import 'package:tasks/screens/form_screen.dart';
 import 'package:tasks/screens/initial_screen.dart';
 
@@ -26,7 +27,9 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       //home: const FormScreen(),
-      home: const InitialScreen(),
+      home: TaskInherited(
+        child: const InitialScreen(),
+      ),
     );
   }
 }
