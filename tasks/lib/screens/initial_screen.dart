@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tasks/components/task.dart';
+import 'package:tasks/data/task_inherited.dart';
 import 'package:tasks/screens/form_screen.dart';
 
 class InitialScreen extends StatefulWidget {
@@ -19,14 +20,7 @@ class _InitialScreenState extends State<InitialScreen> {
           title: const Text('Tasks'),
         ),
         body: ListView(
-          children:const [
-            Task('Primeira Tarefa', 'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large', 3),
-            Task('Segunda Tarefa','https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large', 5),
-            Task('Terceira Tarefa' ,'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large', 4),
-            Task('Quarta Tarefa','https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large', 2),
-            Task('Quinta Tarefa','https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large', 1),
-            SizedBox(height: 70,),
-          ],
+          children: TaskInherited.of(context).taskList
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
