@@ -18,11 +18,20 @@ class TaskDAO {
    static const String _difficulty = 'difficulty';
    static const String _image = 'image';
 
-   // save(Task task) async {
-   //   final Database db = await getDatabase();
-   //   Map<String, dynamic> taskMap = _toMap(task);
-   //   return db.insert(_tablename, taskMap);
-   // }
+   save(Task task) async {
+     final Database db = await getDatabase();
+     var itemExists = await findByName(task.nome);
+      if (itemExists.isNotEmpty) {
+        return db.update(
+            _tablename,
+            _toMap(task),
+            where: '$_name = ?',
+            whereArgs: [task.nome]
+        );
+      } else {
+        return db.insert(_tablename, _toMap(task));
+      }
+   }
 
    Future<List<Task>>findAll() async {
      final Database db = await getDatabase();
@@ -31,13 +40,13 @@ class TaskDAO {
      return tasks;
    }
 
-    // Map<String, dynamic> _toMap(Task task) {
-    //   final Map<String, dynamic> taskMap = Map();
-    //   taskMap[_name] = task.name;
-    //   taskMap[_difficulty] = task.difficulty;
-    //   taskMap[_image] = task.image;
-    //   return taskMap;
-    // }
+    Map<String, dynamic> _toMap(Task task) {
+      final Map<String, dynamic> taskMap = Map();
+      taskMap[_name] = task.nome;
+      taskMap[_difficulty] = task.dificuldade;
+      taskMap[_image] = task.foto;
+      return taskMap;
+    }
 
     List<Task> _toList(List<Map<String, dynamic>> result) {
       final List<Task> tasks = <Task>[];
