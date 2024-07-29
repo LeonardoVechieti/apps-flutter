@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tasks/data/task_DAO.dart';
 import 'package:tasks/data/task_inherited.dart';
 
 import '../components/task.dart';
@@ -157,13 +158,12 @@ class _FormScreenState extends State<FormScreen> {
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        TaskInherited.of(widget.taskContext).newTask(
-                          Task(
-                            nomeController.text,
-                            urlController.text,
-                            int.parse(dificuldadeController.text),
-                          ),
-                        );
+                        TaskDAO().save(Task(
+                          nomeController.text,
+                          urlController.text,
+                          int.parse(dificuldadeController.text),
+                        ));
+
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Tarefa Adicionada')),
                         );

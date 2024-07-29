@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../data/task_DAO.dart';
 import 'dificullty.dart';
 
 class Task extends StatefulWidget {
@@ -72,6 +73,10 @@ class _TaskState extends State<Task> {
                       ],
                     ),
                     ElevatedButton(
+                      onLongPress: () {
+                        TaskDAO().delete(widget.nome);
+                        setState(() {});
+                      },
                       onPressed: () {
                         setState(() {
                           widget.nivel++;
